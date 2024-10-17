@@ -15,6 +15,12 @@ class ReviewsController < ApplicationController
             render :new, status: :unprocessable_entity
         end
     end
+    
+    def destroy
+        @review = Review.find(params[:id])
+        @review.destroy
+        redirect_to restaurant_path(@review.Restaurant), status: :see_other
+    end
 
     private
 
